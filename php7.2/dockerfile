@@ -2,3 +2,5 @@ FROM php:7.2-apache
 RUN apt-get update && \
   docker-php-ext-install pdo_mysql mysqli mbstring
 COPY ./*.conf /etc/apache2/sites-enabled/
+RUN pecl install xdebug \
+  && docker-php-ext-enable xdebug
